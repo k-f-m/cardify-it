@@ -1,0 +1,28 @@
+{
+    "cards": [
+        {
+            "id": 1,
+            "name": "Product 1",
+            "description": "",
+            "imageUrl": "",
+            "productUrl": "",
+            "addToCardId": ""
+        },
+        {
+            "id": 2,
+            "name": "Product 2",
+            "description": "",
+            "imageUrl": "",
+            "productUrl": "",
+            "addToCardId": ""
+        },
+        {
+            "id": 3,
+            "name": "Product 3",
+            "description": "",
+            "imageUrl": "",
+            "productUrl": "",
+            "addToCardId": ""
+        }
+    ]
+}
