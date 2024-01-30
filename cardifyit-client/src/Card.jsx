@@ -101,3 +101,5 @@ Card.propTypes = {
   API_URL: PropTypes.string,
   headers: PropTypes.object
 };
+
+export default Card;
