@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import CardList from './CardList';
+
+const term = "Cardify It!";
+const API_URL = '/cards';
+const headers = {
+  'Content-Type': 'application/json',
+};
 
 // Define a Card component and use useState hook to define two state variables
 const Card = () => {
@@ -93,13 +98,6 @@ const Card = () => {
       />
     </div>
   );
-};
-
-// Define type of props passed to the Card component
-Card.propTypes = {
-  term: PropTypes.string,
-  API_URL: PropTypes.string,
-  headers: PropTypes.object
 };
 
 export default Card;
