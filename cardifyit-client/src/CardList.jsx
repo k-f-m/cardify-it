@@ -182,7 +182,7 @@ function CardList({ name, data, onCreate, onUpdate, onDelete, error }) {
                 alt={item.name}
                 src={item.imageUrl}
                 sx={{
-                  borderRadius: 20,
+                  borderRadius: 1,
                   width: { xs: "100%", sm: 100 },
                   mr: { sm: 1.5 },
                   mb: { xs: 1.5, sm: 0 },
