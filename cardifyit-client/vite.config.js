@@ -9,8 +9,8 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/cards': {
-        // Mock server port
-        target: 'http://localhost:5200',
+        // Server port
+        target: 'http://localhost:5160',
         changeOrigin: true,
         secure: false,
         ws: true,
