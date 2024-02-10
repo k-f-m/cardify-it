@@ -1,6 +1,10 @@
 using Microsoft.OpenApi.Models;
-using cardifyit_api.Data;
+using Microsoft.EntityFrameworkCore;
+using cardifyit_api.Models;
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("Products") ?? "Data Source=Products.db";
+builder.Services.AddSqlite<ProductsDbContext>(connectionString);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -27,16 +31,43 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-   c.SwaggerEndpoint("/swagger/v1/swagger.json", "PizzaStore API V1");
+   c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cardify It! API V1");
 });
 
 app.UseCors(allowSpecificOrigins);
 
-// Add route mappings and invoke CRUD on in-memory storage through routes.
-app.MapGet("/cards/{id}", (int id) => ProductsDB.GetProduct(id));
-app.MapGet("/cards", () => ProductsDB.GetProducts());
-app.MapPost("/cards", (Product card) => ProductsDB.CreateProduct(card));
-app.MapPut("/cards", (Product card) => ProductsDB.UpdateProduct(card));
-app.MapDelete("/cards/{id}", (int id) => ProductsDB.RemoveProduct(id));
+// Add route mappings and invoke CRUD on SQLight DB through routes.
+app.MapGet("/cards", async (ProductsDbContext db) => await db.Products.ToListAsync());
+
+app.MapPost("/cards", async (ProductsDbContext db, Product product) =>
+{
+    await db.Products.AddAsync(product);
+    await db.SaveChangesAsync();
+    return Results.Created($"/cards/{product.Id}", product);
+});
+
+app.MapGet("/cards/{id}", async (ProductsDbContext db, int id) => await db.Products.FindAsync(id));
+
+app.MapPut("/cards/{id}", async (ProductsDbContext db, Product updateproduct, int id) =>
+{
+    var product = await db.Products.FindAsync(id);
+    if (product is null) return Results.NotFound();
+    product.Name = updateproduct.Name;
+    product.Description = updateproduct.Description;
+    await db.SaveChangesAsync();
+    return Results.NoContent();
+});
+
+app.MapDelete("/cards/{id}", async (ProductsDbContext db, int id) =>
+{
+    var product = await db.Products.FindAsync(id);
+    if (product is null)
+    {
+        return Results.NotFound();
+    }
+    db.Products.Remove(product);
+    await db.SaveChangesAsync();
+    return Results.Ok();
+});
 
 app.Run();
