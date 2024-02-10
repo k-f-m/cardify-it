@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using cardifyit_api.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
@@ -31,6 +32,11 @@ app.UseSwaggerUI(c =>
 
 app.UseCors(allowSpecificOrigins);
 
-app.MapGet("/", () => "Hello World!");
+// Add route mappings and invoke CRUD on in-memory storage through routes.
+app.MapGet("/cards/{id}", (int id) => ProductsDB.GetProduct(id));
+app.MapGet("/cards", () => ProductsDB.GetProducts());
+app.MapPost("/cards", (Product card) => ProductsDB.CreateProduct(card));
+app.MapPut("/cards", (Product card) => ProductsDB.UpdateProduct(card));
+app.MapDelete("/cards/{id}", (int id) => ProductsDB.RemoveProduct(id));
 
 app.Run();

@@ -24,6 +24,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cardifyit-client", "cardify
 		..\cardifyit-client\vite.config.js = ..\cardifyit-client\vite.config.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{85C64C5E-7672-4859-ACC9-588730B0D20B}"
+	ProjectSection(SolutionItems) = preProject
+		..\cardifyit-client\src\App.css = ..\cardifyit-client\src\App.css
+		..\cardifyit-client\src\App.jsx = ..\cardifyit-client\src\App.jsx
+		..\cardifyit-client\src\Card.jsx = ..\cardifyit-client\src\Card.jsx
+		..\cardifyit-client\src\CardList.jsx = ..\cardifyit-client\src\CardList.jsx
+		..\cardifyit-client\src\index.css = ..\cardifyit-client\src\index.css
+		..\cardifyit-client\src\main.jsx = ..\cardifyit-client\src\main.jsx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{70E41499-BDE2-47D3-801B-9AC60CF5EB50}"
+	ProjectSection(SolutionItems) = preProject
+		..\cardifyit-client\src\assets\react.svg = ..\cardifyit-client\src\assets\react.svg
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "public", "public", "{2D55B58E-8DDD-4996-9400-7806BC54970F}"
+	ProjectSection(SolutionItems) = preProject
+		..\cardifyit-client\public\vite.svg = ..\cardifyit-client\public\vite.svg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +57,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{85C64C5E-7672-4859-ACC9-588730B0D20B} = {E0608DEE-C43D-4F59-9AF0-EB8CBE3E0791}
+		{70E41499-BDE2-47D3-801B-9AC60CF5EB50} = {85C64C5E-7672-4859-ACC9-588730B0D20B}
+		{2D55B58E-8DDD-4996-9400-7806BC54970F} = {E0608DEE-C43D-4F59-9AF0-EB8CBE3E0791}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9793972-74C2-4A66-AA6C-E251287E2252}
