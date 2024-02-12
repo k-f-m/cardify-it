@@ -145,7 +145,7 @@ function CardList({ name, data, onCreate, onUpdate, onDelete, error }) {
           onChange={handleFormChange}
         />
         <TextField
-          label="Add to Cart ID"
+          label="Add to Card ID"
           name="addToCardId"
           value={formData.addToCardId}
           onChange={handleFormChange}
